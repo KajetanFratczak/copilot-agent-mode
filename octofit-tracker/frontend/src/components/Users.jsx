@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react';
-import { getApiBaseUrl } from '../utils/api.js';
+
+// VITE_CODESPACE_NAME must be defined in .env.local for Codespaces support.
+// Example: VITE_CODESPACE_NAME=my-codespace-name
+const CODESPACE_NAME = import.meta.env.VITE_CODESPACE_NAME;
+
+const API_BASE_URL = CODESPACE_NAME
+  ? `https://${CODESPACE_NAME}-8000.app.github.dev`
+  : 'http://localhost:8000';
 
 function Users() {
   const [items, setItems] = useState([]);
   const [error, setError] = useState('');
-  const endpoint = '/api/users/';
 
   useEffect(() => {
     async function load() {
       try {
-        const response = await fetch(`${getApiBaseUrl()}${endpoint}`);
+        const response = await fetch(`${API_BASE_URL}/api/users/`);
         const data = await response.json();
         const payload = Array.isArray(data) ? data : data.users ?? data.results ?? [];
         setItems(payload);
