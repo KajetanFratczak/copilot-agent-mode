@@ -2,10 +2,8 @@ import { useEffect, useState } from 'react';
 
 // VITE_CODESPACE_NAME must be defined in .env.local for Codespaces support.
 // Example: VITE_CODESPACE_NAME=my-codespace-name
-const CODESPACE_NAME = import.meta.env.VITE_CODESPACE_NAME;
-
-const API_BASE_URL = CODESPACE_NAME
-  ? `https://${CODESPACE_NAME}-8000.app.github.dev`
+const API_BASE_URL = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev`
   : 'http://localhost:8000';
 
 function Teams() {
