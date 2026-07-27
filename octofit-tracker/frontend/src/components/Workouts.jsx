@@ -4,11 +4,12 @@ import { getApiBaseUrl } from '../utils/api.js';
 function Workouts() {
   const [items, setItems] = useState([]);
   const [error, setError] = useState('');
+  const endpoint = '/api/workouts/';
 
   useEffect(() => {
     async function load() {
       try {
-        const response = await fetch(`${getApiBaseUrl()}/api/workouts/`);
+        const response = await fetch(`${getApiBaseUrl()}${endpoint}`);
         const data = await response.json();
         const payload = Array.isArray(data) ? data : data.workouts ?? data.results ?? [];
         setItems(payload);

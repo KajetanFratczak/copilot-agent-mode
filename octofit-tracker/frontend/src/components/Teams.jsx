@@ -4,11 +4,12 @@ import { getApiBaseUrl } from '../utils/api.js';
 function Teams() {
   const [items, setItems] = useState([]);
   const [error, setError] = useState('');
+  const endpoint = '/api/teams/';
 
   useEffect(() => {
     async function load() {
       try {
-        const response = await fetch(`${getApiBaseUrl()}/api/teams/`);
+        const response = await fetch(`${getApiBaseUrl()}${endpoint}`);
         const data = await response.json();
         const payload = Array.isArray(data) ? data : data.teams ?? data.results ?? [];
         setItems(payload);
