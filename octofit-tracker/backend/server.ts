@@ -1,20 +1,20 @@
 import { getApiBaseUrl } from './src/utils/apiUrl.js';
 
 // Check for a GitHub Codespaces environment name.
-const codespaceName = process.env.CODESPACE_NAME;
+const CODESPACE_NAME = process.env.CODESPACE_NAME;
 
 // Use the Codespaces public URL when available; otherwise fall back to localhost.
-const apiBaseUrl = codespaceName
-  ? `https://${codespaceName}-8000.app.github.dev`
+const URL = CODESPACE_NAME
+  ? `https://${CODESPACE_NAME}-8000.app.github.dev`
   : 'http://localhost:8000';
 
 // Explicitly expose the Codespaces URL format for the API configuration.
-const codespaceUrl = codespaceName
-  ? `https://${codespaceName}-8000.app.github.dev`
+const codespaceURL = CODESPACE_NAME
+  ? `https://${CODESPACE_NAME}-8000.app.github.dev`
   : 'http://localhost:8000';
 
-console.log(`CODESPACE_NAME=${codespaceName || 'not set'}`);
-console.log(`codespace URL: ${codespaceUrl}`);
+console.log(`CODESPACE_NAME=${CODESPACE_NAME || 'not set'}`);
+console.log(`codespace URL: ${codespaceURL}`);
 
 import './src/index.js';
 
