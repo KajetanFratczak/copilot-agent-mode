@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 // VITE_CODESPACE_NAME must be defined in .env.local for Codespaces support.
 // Example: VITE_CODESPACE_NAME=my-codespace-name
 const API_BASE_URL = import.meta.env.VITE_CODESPACE_NAME
-  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev`
-  : 'http://localhost:8000';
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/`
+  : 'http://localhost:8000/api/leaderboard/';
 
 function Leaderboard() {
   const [items, setItems] = useState([]);
